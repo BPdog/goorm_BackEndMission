@@ -1,4 +1,4 @@
-package daily;
+package daily.daily_0915;
 
 public class Member {
 	private String name;
