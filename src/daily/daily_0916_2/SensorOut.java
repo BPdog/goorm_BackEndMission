@@ -1,6 +1,7 @@
 package daily.daily_0916_2;
 
 import java.util.Random;
+import java.util.concurrent.ThreadLocalRandom;
 
 public class SensorOut implements Runnable {
 	private final ParkingLot parkingLot;
@@ -18,8 +19,9 @@ public class SensorOut implements Runnable {
 	public void run() {
 		try {
 			while (control.isRunning()) {
-				Thread.sleep(MIN_DELAY + rand.nextInt(MAX_DELAY + 1 - MIN_DELAY)); // 300~900ms 대기
-
+				//Thread.sleep(MIN_DELAY + rand.nextInt(MAX_DELAY + 1 - MIN_DELAY)); 기존코드
+				int randomDelay = ThreadLocalRandom.current().nextInt(MIN_DELAY, MAX_DELAY+1);
+				Thread.sleep(randomDelay);
 				synchronized (parkingLot.getLock()) {
 					if (parkingLot.getOccupied().get() == 0) {
 						System.out.println("출차 대기 (빈 차량 없음)");

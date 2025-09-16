@@ -23,7 +23,9 @@ public class Main {
 
 		entryThread.join();
 		exitThread.join();
-
-		System.out.println("영업 종료 (최종 점유: " + parkingLot.getOccupied().get() + "/" + CAPACITY + ")");
+		System.out.println("\n==============================");
+		System.out.println("\n            영업 종료            ");
+		System.out.println("(최종 점유: " + parkingLot.getOccupied().get() + "/" + CAPACITY + ")");
+		System.out.println("\n==============================");
 	}
 }
